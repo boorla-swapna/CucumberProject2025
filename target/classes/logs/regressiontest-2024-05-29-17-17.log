@@ -1,0 +1,10 @@
+2024-05-29-17:17:42 INFO  Verifying ApplicationPage is Displayed
+2024-05-29-17:17:42 INFO  PASS: ApplicationPage is Displayed
+2024-05-29-17:17:42 INFO  PASS: SFDC Application login page is opened
+2024-05-29-17:17:43 INFO  Entered Username in the username field
+2024-05-29-17:17:44 INFO  PASS: Verified: UserName Displayed in username field
+2024-05-29-17:17:44 INFO  PASS: Username is Displayed in Username Field
+2024-05-29-17:17:44 WARN  Password field is Empty
+2024-05-29-17:17:44 INFO  PASS: Password field is Empty 
+2024-05-29-17:17:44 INFO  Clicked on loginButton
+2024-05-29-17:17:44 INFO  Error message is Displayed as expected

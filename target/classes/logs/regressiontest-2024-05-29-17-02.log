@@ -1,0 +1,7 @@
+2024-05-29-17:02:36 INFO  Verifying ApplicationPage is Displayed
+2024-05-29-17:02:36 INFO  PASS: ApplicationPage is Displayed
+2024-05-29-17:02:37 INFO  Entered Username in the username field
+2024-05-29-17:02:37 INFO  PASS: Verified: UserName Displayed in username field
+2024-05-29-17:02:37 WARN  Password field is Empty
+2024-05-29-17:02:37 INFO  Clicked on loginButton
+2024-05-29-17:02:38 INFO  Error message is Displayed as expected

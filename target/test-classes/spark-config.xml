@@ -1,0 +1,16 @@
+<configuration>
+    <theme>dark</theme>
+    <encoding>utf-8</encoding>
+    <protocol>https</protocol>
+    <timelineEnabled>true</timelineEnabled>
+    <documentTitle>Extent Report</documentTitle>
+    <reportName>Sample Extent Report</reportName>
+    <reportHeadline>Extent Report - Custom Report</reportHeadline>
+    <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat> 
+    <css> 
+		/* Custom CSS */ 
+		.test-name { font-weight: bold; } 
+		.pass { color: green; } 
+		.fail { color: red; }
+    </css>
+</configuration>

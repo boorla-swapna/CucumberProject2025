@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		
 		plugin= {"pretty","html:target/cucumber-reports/report.html"},
-		features="src\\main\\java\\features\\DataDriven.feature", glue={"stepdefinitions.datadriven"},
+		features="src/main/java/features/DataDriven.feature", glue={"stepdefinitions.datadriven"},
 		monochrome=true)
 
 public class DataDrivenTestRunner {

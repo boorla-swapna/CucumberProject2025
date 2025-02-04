@@ -1,0 +1,6 @@
+2025-01-07-19:16:27 INFO  Verifying ApplicationPage is Displayed
+2025-01-07-19:16:27 INFO  PASS: ApplicationPage is Displayed
+2025-01-07-19:16:27 INFO  PASS: SFDC Application login page is opened
+2025-01-07-19:16:28 WARN  Password field is Empty
+2025-01-07-19:16:29 INFO  Clicked on loginButton
+2025-01-07-19:16:29 INFO  Error message is Displayed as expected
