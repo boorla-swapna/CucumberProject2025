@@ -16,7 +16,7 @@
             <version>2.22.2</version>
             <configuration>
                 <includes>
-                    <include>Cucumber/src/main/java/runner/DataDrivenTestRunner.java</include>
+                    <include>**/runner/DataDrivenTestRunner.java</include>
                 </includes>
             </configuration>
         </plugin>
