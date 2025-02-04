@@ -61,5 +61,13 @@ public class DataUtils {
 		Properties prop=new Properties();
 		prop.load(fileinputstream);
 		return prop.getProperty(Key);
+	}	
+		
+		public static String readExtentPropertiesData(String key,String filepath) throws IOException {
+			fileinputstream = new FileInputStream(filepath);
+			
+			Properties p = new Properties();
+			p.load(fileinputstream);
+			return p.getProperty(key);
 }
 }

@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+    stages {
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                bat 'mvn test'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Pipeline completed.'
+        }
+    }
+}

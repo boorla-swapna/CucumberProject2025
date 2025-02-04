@@ -2,15 +2,11 @@ package utils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-
 import constants.FileConstants;
 
 
@@ -38,4 +34,10 @@ public class CommonUtils {
 //		action.moveToElement(element).build().perform();
 //	}
 	
+	public static  void generateReportPath() { 
+		String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()); 
+		String reportPath = "target/cucumber-reports/cucumber-report-" + timestamp + ".html";
+		 System.setProperty("reportPath", reportPath);
+	}
+
 }

@@ -19,10 +19,16 @@ import utils.WaitUtils;
 
 public class LoginPage extends BasePage{
 	
-	public  LoginPage(WebDriver driver) {
+	public LoginPage(WebDriver driver) {
 		super(driver);
+		// TODO Auto-generated constructor stub
 	}
-	
+
+
+//	public  LoginPage(WebDriver driver) {
+//		super(driver);
+//	}
+//	
 	@FindBy(id="username")
 	public WebElement username;
 	
@@ -231,7 +237,7 @@ public class LoginPage extends BasePage{
 		boolean isApplicationPageDisplayed=false;
 		logger.info("Verifying ApplicationPage is Displayed");
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(8000));
-		wait.until(ExpectedConditions.titleContains("Login"));
+		wait.until(ExpectedConditions.titleContains("Login | Salesforce"));
 		String actualTitle=driver.getTitle();
 		String expectedTitle="Login | Salesforce";
 		if(actualTitle.contains(expectedTitle)) {
@@ -243,10 +249,11 @@ public class LoginPage extends BasePage{
 			return isApplicationPageDisplayed;
 	}
 	
-	public  void enterUserName(WebDriver driver,String userEmail) throws IOException {
-		
+	public  LoginPage enterUserName(WebDriver driver,String userEmail) throws IOException {
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(8000));
+		wait.until(ExpectedConditions.visibilityOf(username));
 		if(this.username.isDisplayed()) {
-			if(!this.username.getAttribute("value").isEmpty())
+			
 			this.username.clear();
 			this.username.sendKeys(userEmail);	
 			
@@ -254,35 +261,32 @@ public class LoginPage extends BasePage{
 		}else {
 			logger.error("Enter Username into username field");
 		}
-		
+		return this;
 	}
 		
-public  boolean verifyLoginToSFDC(WebDriver driver,String userEmail,String password) throws IOException {
-		boolean isLoginToSFDCSuccessfull=false;
-		if(this.username.isDisplayed()) {
-			if(!this.username.getAttribute("value").isEmpty())
-			this.username.clear();
-			this.username.sendKeys(userEmail);	
-			verifyUserNameIsDisplayedInUserNameField(driver);
-			logger.info("Entered Username in the username field");
-		}else {
-			logger.error("Username is displayed into username field");
-		}
-		if(this.password.isDisplayed()) {
-			if(this.password.getAttribute("value").isEmpty())
-				this.password.clear();
-			    this.password.sendKeys(password);
-			    if(!this.password.getAttribute("value").isEmpty()) {
-			    logger.info("Entered Password in password field");
-		}else {
-			logger.error("Password is not entered in password field");
-		}
-		}
-		if(clickLoginButton(driver)) {
-			isLoginToSFDCSuccessfull=true;
-		}
-		return isLoginToSFDCSuccessfull;
-		}
+//public  boolean verifyLoginToSFDC(WebDriver driver,String userEmail,String password) throws IOException {
+//		boolean isLoginToSFDCSuccessfull=false;
+//		if(this.username.isDisplayed()) {
+//			if(!this.username.getAttribute("value").isEmpty())
+//			this.username.clear();
+//			this.username.sendKeys(userEmail);	
+//			verifyUserNameIsDisplayedInUserNameField(driver);
+//			logger.info("Entered Username in the username field");
+//		}else {
+//			logger.error("Username is displayed into username field");
+//		}
+//		if(this.password.isDisplayed()) {
+//			if(this.password.getAttribute("value").isEmpty())
+//				this.password.clear();
+//			    this.password.sendKeys(password);
+//			    if(!this.password.getAttribute("value").isEmpty()) {
+//			    logger.info("Entered Password in password field");
+//		}else {
+//			logger.error("Password is not entered in password field");
+//		}
+//		}
+//		
+//		}
 
 	public boolean verifyUserNameIsDisplayedInUserNameField(WebDriver driver) throws IOException {
 		//String expectedUsername=DataUtils.readLoginTestData("valid.username");
@@ -303,7 +307,7 @@ public  boolean verifyLoginToSFDC(WebDriver driver,String userEmail,String passw
 	
 	
 	
-	public  void enterPassword(String password) {//change for other testcase
+	public  LoginPage enterPassword(String password) {//change for other testcase
 		
 		if(this.password.isDisplayed()) {
 			this.password.clear();
@@ -315,6 +319,7 @@ public  boolean verifyLoginToSFDC(WebDriver driver,String userEmail,String passw
 			}
 			
 		} 
+		return this;
 		
 	}
 	public boolean verifyEmptyPasswordFieldDisplayed(WebDriver driver) throws IOException {
@@ -325,17 +330,17 @@ public  boolean verifyLoginToSFDC(WebDriver driver,String userEmail,String passw
 		return isPasswordFieldEmpty;
 		}
 
-	public  boolean clickLoginButton(WebDriver driver) {
-		boolean isLoginButtonDisplayed=false;
+	public  LoginPage clickLoginButton(WebDriver driver) {
+		//boolean isLoginButtonDisplayed=false;
 		if(WaitUtils.elementToBeClickable(driver, loginButton)) {
-			isLoginButtonDisplayed=true;
+			//isLoginButtonDisplayed=true;
 			loginButton.click();
 			logger.info("Clicked on loginButton");
 	}
 	else {
     	  logger.warn("Login Button is not Clickable");
       }
-		return isLoginButtonDisplayed;
+		return this;
 	}
 	
 	public  boolean verfiyPasswordErrorMessageDisplayed(WebDriver driver,String expectedPasswordErrorMsg) {

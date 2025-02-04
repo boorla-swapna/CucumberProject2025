@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -17,33 +18,52 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-import constants.FileConstants;
+import com.aventstack.extentreports.ExtentTest;
+
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeAll;
+import io.cucumber.java.Scenario;
+import pages.LoginPage;
+import runner.TestRunner;
 
 
 public class BaseSteps {
 	public static WebDriver driver;
+	
 	public static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<WebDriver>();
-    public static ExtentReports extent;
-    public static ThreadLocal<ExtentTest> threadExtentTest=new ThreadLocal<ExtentTest>();
-    public static ExtentTest test;
+       
     public static Logger logger = LogManager.getLogger("BaseSteps");
-    
-    
-    
-   @BeforeSuite  
-    public static void doConfigReport() {
-        extent = new ExtentReports();
-    	ExtentSparkReporter sparkReporter=new ExtentSparkReporter(FileConstants.REPORTS_FILE_PATH);
-    	extent.attachReporter(sparkReporter);
-    }
-    @AfterSuite
-    public static void tearDownConfigReport() {
-    	extent.flush();
-    }
+    public static ExtentTest test;
+    public static LoginPage lp;
+
+//		@BeforeAll
+//		public static void before_or_after_all() {
+//			System.out.println("Initializing WebDriver");
+//			setDriver("chrome",false);
+//			System.out.println("Set the Driver to Chrome");
+//			lp=new LoginPage(getDriver());
+//			System.out.println("Driver Initialized" +getDriver());
+//		}
+//		
+//
+//		@AfterAll
+//		public static void tearDownConfigReport() {
+//			if(getDriver()!=null) {
+//				getDriver().close();
+//			}
+//			
+//		}
+//		
+//		@Before 
+//		public void beforeScenario(Scenario scenario) { 
+//			System.out.println("Running @Before for scenario: " + scenario.getName());
+//			test = TestRunner.extent.createTest(scenario.getName()); 
+//		
+//			} 
+//		
+		
     public static void setDriver(String browserName,  boolean headLess) {
 		WebDriver driver = BaseSteps.getBrowserDriver(browserName, false);
 	    threadLocalDriver.set(driver);
