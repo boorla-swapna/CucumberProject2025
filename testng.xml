@@ -14,10 +14,10 @@
      
     </classes>
   </test> <!-- Test -->
-  <test name="Datadriven Tests">
+  <!--<test name="Datadriven Tests">
 	  <classes>
 	  <class name="runner.DataDrivenTestRunner.java"> </class>
 	  </classes>
-  </test>
+  </test> -->
   
 </suite> <!-- Suite -->

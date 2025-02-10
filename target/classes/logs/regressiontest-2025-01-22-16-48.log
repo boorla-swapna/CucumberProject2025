@@ -1,9 +1,0 @@
-2025-01-22-16:48:25 INFO  Entered Username in the username field
-2025-01-22-16:48:25 INFO  learntekarch25Password Entered
-2025-01-22-16:48:26 INFO  Clicked on loginButton
-2025-01-22-16:48:26 INFO  Verifying Home Page is Displayed
-2025-01-22-16:48:27 INFO  PASS: Home Page is Opened
-2025-01-22-16:48:27 INFO  Entered Username in the username field
-2025-01-22-16:48:27 INFO  22131Password Entered
-2025-01-22-16:48:27 INFO  Clicked on loginButton
-2025-01-22-16:48:27 INFO  PASS: Wrong password Entered into password field as Expected

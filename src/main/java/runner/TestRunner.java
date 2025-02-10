@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Properties;
 
 import org.junit.runner.RunWith;
@@ -20,12 +21,14 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import stepdefinitions.BaseSteps;
+import stepdefinitions.LoginSteps;
 import utils.CommonUtils;
 
 
 @CucumberOptions(
 		plugin= {"pretty","html:target/cucumber-reports/report.html","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
-		features="src\\main\\java\\features", glue={"stepdefinitions"},
+		features="src\\main\\java\\features\\Loginfeature.feature", glue={"stepdefinitions"},
 		monochrome=true)
 
 public class TestRunner extends AbstractTestNGCucumberTests{
@@ -37,7 +40,7 @@ public class TestRunner extends AbstractTestNGCucumberTests{
    
 
     @BeforeClass
-    public void setUp() {
+    public void setUp()  {
    	
     	Properties prop=new Properties();
     	try {
@@ -63,8 +66,11 @@ public class TestRunner extends AbstractTestNGCucumberTests{
 		}
         extent.attachReporter(spark); 
 
+       
         
     }
+   
+   
 
     
     public static ExtentTest getTest() {

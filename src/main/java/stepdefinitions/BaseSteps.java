@@ -1,6 +1,8 @@
 package stepdefinitions;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Set;
 
@@ -13,7 +15,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -37,35 +42,11 @@ public class BaseSteps {
     public static Logger logger = LogManager.getLogger("BaseSteps");
     public static ExtentTest test;
     public static LoginPage lp;
+    //public static final String HUB_URL = "http://192.168.254.13:4444/wd/hub"; 
 
-//		@BeforeAll
-//		public static void before_or_after_all() {
-//			System.out.println("Initializing WebDriver");
-//			setDriver("chrome",false);
-//			System.out.println("Set the Driver to Chrome");
-//			lp=new LoginPage(getDriver());
-//			System.out.println("Driver Initialized" +getDriver());
-//		}
-//		
-//
-//		@AfterAll
-//		public static void tearDownConfigReport() {
-//			if(getDriver()!=null) {
-//				getDriver().close();
-//			}
-//			
-//		}
-//		
-//		@Before 
-//		public void beforeScenario(Scenario scenario) { 
-//			System.out.println("Running @Before for scenario: " + scenario.getName());
-//			test = TestRunner.extent.createTest(scenario.getName()); 
-//		
-//			} 
-//		
 		
-    public static void setDriver(String browserName,  boolean headLess) {
-		WebDriver driver = BaseSteps.getBrowserDriver(browserName, false);
+    public static void setDriver(String browserName,  boolean headless) throws MalformedURLException {
+		WebDriver driver = BaseSteps.getBrowserDriver(browserName, headless);
 	    threadLocalDriver.set(driver);
 	}
 	
@@ -73,7 +54,7 @@ public class BaseSteps {
 		return threadLocalDriver.get();
 	}
     
-	public static WebDriver getBrowserDriver(String bname,boolean headless) {
+	public static WebDriver getBrowserDriver(String bname,boolean headless) throws MalformedURLException {
 		
 		
 		bname=bname.toLowerCase();
@@ -84,18 +65,21 @@ public class BaseSteps {
 				ChromeOptions options=new ChromeOptions();
 				options.addArguments("--headless,--disable-gpu");
 				driver=new ChromeDriver(options);
+				
 			}else {
-			  driver=new ChromeDriver();
+				
+				driver=new ChromeDriver();
 			}
 			break;
 			
-		case "Edge":
+		case "firefox":
 			if(headless) {
-				EdgeOptions options=new EdgeOptions();
-				options.addArguments("--headless,--disable-gpu");
-				driver=new EdgeDriver(options);
+				FirefoxOptions firefoxoptions=new FirefoxOptions();
+				firefoxoptions.addArguments("--headless,--disable-gpu");
+				driver=new FirefoxDriver(firefoxoptions);
 			}else {
-				driver=new EdgeDriver();
+				FirefoxOptions firefoxoptions=new FirefoxOptions();
+				//driver=new RemoteWebDriver(new URL(HUB_URL),firefoxoptions);
 			}
 		break;
 			default:

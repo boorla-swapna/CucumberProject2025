@@ -1,6 +1,7 @@
 package stepdefinitions.datadriven;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,20 +17,23 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.LoginPage;
 import stepdefinitions.BaseSteps;
+import stepdefinitions.BaseStepsDataDriven;
 import utils.DataUtils;
 
 
-public class DataDriveSteps extends BaseSteps{
+
+
+public class DataDriveSteps extends BaseStepsDataDriven{
 	
 	static WebDriver driver;
 	 static LoginPage lp; 
 
 
 	@BeforeAll
-	public static void before_or_after_all() {
+	public static void before_or_after_all() throws MalformedURLException {
 		System.out.println("getting the driver from data driven Steps");
-		BaseSteps.setDriver("chrome", false);
-		driver=BaseSteps.getDriver();
+		BaseStepsDataDriven.setDriver("chrome", false);
+		driver=BaseStepsDataDriven.getDriver();
 		System.out.println(driver.getCurrentUrl());
 		lp = new LoginPage(driver);
 		
@@ -52,6 +56,7 @@ public class DataDriveSteps extends BaseSteps{
 	
 	@Given("I am on the login page")
 	public void i_am_on_the_login_page() throws IOException {
+		
 		driver.get(DataUtils.readLoginTestData("app.url"));
 	    driver.manage().window().maximize();
 
@@ -59,8 +64,9 @@ public class DataDriveSteps extends BaseSteps{
 
 	@When("I enter {string} and {string}")
 	public void i_enter_and(String username, String password) throws IOException {
-		 lp.enterUserName(driver, DataUtils.readLoginTestData(username)).enterPassword(DataUtils.readLoginTestData(password));
-	    }
+		
+		 lp.enterUserName(driver, DataUtils.readLoginTestData(username)).enterPassword(DataUtils.readLoginTestData(password));    
+	}
 
 	
 

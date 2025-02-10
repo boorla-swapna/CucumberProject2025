@@ -9,7 +9,7 @@
           <include name="tearDown"/>
           <include name="setUp"/>
           <include name="tearDownClass"/>
-          <include name="runScenario"/>
+          <include name="runScenario" invocation-numbers="0 2"/>
         </methods>
       </class> <!-- runner.TestRunner -->
     </classes>

@@ -1,6 +1,7 @@
 pages\CreateAccountPage.class
 stepdefinitions\SucessfullScenarioSteps.class
 stepdefinitions\LoginSteps.class
+GridDemoSteps\LoginSteps.class
 pages\BasePage.class
 pages\selectUsermenuForUsernameDropdownPage.class
 runner\DataDrivenTestRunner.class
@@ -10,8 +11,11 @@ testdata\LeadsExpectedDropDownList.class
 stepdefinitions\datadriven\DataDriveSteps.class
 pages\LeadsPage.class
 utils\WaitUtils.class
+GridDemoRunner\GridDemo.class
+GridDemoSteps\BaseSteps.class
 runner\TestRunner.class
 utils\CommonUtils.class
+stepdefinitions\BaseStepsDataDriven.class
 utils\DataUtils.class
 pages\ContactsPage.class
 listeners\TestListener.class

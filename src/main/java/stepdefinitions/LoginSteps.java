@@ -3,7 +3,8 @@ package stepdefinitions;
 
 
 import java.io.IOException;
-
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.io.File;
 
 import org.apache.logging.log4j.LogManager;
@@ -11,6 +12,10 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.Listeners;
 
 import com.aventstack.extentreports.ExtentTest;
@@ -24,6 +29,7 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 import listeners.TestListener;
 import pages.LoginPage;
 import runner.TestRunner;
@@ -37,35 +43,37 @@ public class LoginSteps extends BaseSteps {
 	 static WebDriver driver;
 	 static LoginPage lp; 
     static ExtentTest test;
+    
 
-	@BeforeAll
-	public static void before_or_after_all() {
+	@Before
+	public static void before_or_after_all() throws MalformedURLException {
 		System.out.println("getting the driver");
 		BaseSteps.setDriver("chrome", false);
-         driver=BaseSteps.getDriver();
+		driver=BaseSteps.getDriver();
 		System.out.println(driver.getCurrentUrl());
 		lp = new LoginPage(driver);
-		
 	}
-	
-
-	@AfterAll
+  
+		
+	@After
 	public static void tearDownConfigReport() {
 		if(driver!=null) {
-			driver.close();
+			driver.quit();
 		}
 		
 	}
 	
 	@Before 
 	public void beforeScenario(Scenario scenario) { 
+		
 		test = TestRunner.extent.createTest(scenario.getName()); 
 		} 
 	
 	
+	
     
 	@Given("user launched login Page")
-	public void user_launched_login_page() throws IOException {
+	public static void user_launched_login_page() throws IOException {
 		
 		driver.get(DataUtils.readLoginTestData("app.url"));
 	    driver.manage().window().maximize();
@@ -120,7 +128,6 @@ public class LoginSteps extends BaseSteps {
 	}
 	
 	
-
 	
 
 }

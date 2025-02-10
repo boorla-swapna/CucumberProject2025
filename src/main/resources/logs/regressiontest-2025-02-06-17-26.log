@@ -1,0 +1,14 @@
+2025-02-06-17:26:22 INFO  Verifying ApplicationPage is Displayed
+2025-02-06-17:26:22 INFO  PASS: ApplicationPage is Displayed
+2025-02-06-17:26:22 INFO  PASS: SFDC Application login page is opened
+2025-02-06-17:26:23 INFO  PASS: Verified: UserName Displayed in username field
+2025-02-06-17:26:23 INFO  PASS: Username is Displayed in Username Field
+2025-02-06-17:26:24 WARN  Password field is Empty
+2025-02-06-17:26:24 INFO  PASS: Password field is Empty 
+2025-02-06-17:26:25 INFO  Clicked on loginButton
+2025-02-06-17:26:25 INFO  Error message is Displayed as expected
+2025-02-06-17:26:30 INFO  Entered Username in the username field
+2025-02-06-17:26:31 INFO  learntekarch25Password Entered
+2025-02-06-17:26:33 INFO  Clicked on loginButton
+2025-02-06-17:26:33 INFO  Verifying Home Page is Displayed
+2025-02-06-17:26:33 INFO  PASS: Home Page is Opened
